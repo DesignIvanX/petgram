@@ -1,9 +1,15 @@
 import React from "react";
-
+import { ListOfCategories } from "./ListOfCategories";
+import { GlobalStyle } from "./style/Global";
+import { ListOfPhotoCard } from "./ListOfPhotoCard";
+import Logo from "./Logo";
 const App = () => {
   return (
     <div>
-      <h1>Hola Mundo</h1>
+      <GlobalStyle />
+      <Logo />
+      <ListOfCategories />
+      <ListOfPhotoCard />
     </div>
   );
 };

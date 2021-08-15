@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Category } from "./Category";
 import { List, Item } from "./style/ListOfCategories";
 import { categories as mockCategories } from "../api/db.json";
 export const ListOfCategories = () => {
   const [categories, setCategories] = useState(mockCategories);
-  // useEffect(() => {
-  //   try {
-  //     fetch("hhtps:example.com")
-  //       .then((resolve) => resolve.json())
-  //       .then((data) => setCategories(data));
-  //   } catch (error) {
-  //     return error.message;
-  //   }
-  // });
+  useEffect(() => {
+    setCategories(mockCategories);
+  }, []);
   return (
     <List>
       {categories.map((category) => (

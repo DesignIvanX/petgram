@@ -1,11 +1,11 @@
 import React from "react";
-import { Anchor, Image } from "./style/Category";
+import { Link, Image } from "./style/Category";
 
-export const Category = ({ name, path, cover, emoji }) => {
+export const Category = ({ name, path = "#", cover, emoji }) => {
   return (
-    <Anchor href={path}>
+    <Link to={path}>
       <Image src={cover} alt={name} />
       {emoji}
-    </Anchor>
+    </Link>
   );
 };

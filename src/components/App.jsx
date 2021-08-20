@@ -1,16 +1,36 @@
-import React from "react";
-import { ListOfCategories } from "./ListOfCategories";
-import { GlobalStyle } from "./style/Global";
-import { ListOfPhotoCard } from "./ListOfPhotoCard";
-import Logo from "./Logo";
+import React, { useContext } from "react";
+import { Home } from "../pages/Home";
+import { Router } from "@reach/router";
+import { Details } from "../pages/Details";
+import { Layout } from "./Layout";
+import { Favs } from "../pages/Favs";
+import { User } from "../pages/User";
+import { NotRegisteredUser } from "../pages/NotRegisteredUser";
+import { AppContext } from "../context/AppContext";
+
 const App = () => {
+  const { isAuth } = useContext(AppContext);
   return (
-    <div>
-      <GlobalStyle />
-      <Logo />
-      <ListOfCategories />
-      <ListOfPhotoCard />
-    </div>
+    <>
+      <Layout>
+        <Router>
+          <Home path="/" />
+          <Home path="/pet/:id" />
+          <Details path="/detail/:detailId" />
+        </Router>
+        {isAuth ? (
+          <Router>
+            <Favs path="/favs" />
+            <User path="/user" />
+          </Router>
+        ) : (
+          <Router>
+            <NotRegisteredUser path="/favs" />
+            <NotRegisteredUser path="/user" />
+          </Router>
+        )}
+      </Layout>
+    </>
   );
 };
 
